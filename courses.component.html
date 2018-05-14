@@ -1,0 +1,53 @@
+<h2>Les Courses</h2>
+<div class="row">
+  <div class="col-xs-12 col-lg-8">
+    <div class="row">
+      <div class="col-3 col-lg-3" *ngFor="let course of courses">
+        <div class="card mb-2 border-0" style="width: 20rem;">
+          <!-- -->
+          <div id="carouselExampleIndicators_{{course.id}}" class="carousel slide" data-ride="carousel" data-interval="0">
+            <ol class="carousel-indicators">
+              <li [attr.data-target]="'#carouselExampleIndicators_'+ course.id" data-slide-to="0" class="active"></li>
+              <li [attr.data-target]="'#carouselExampleIndicators_'+ course.id" data-slide-to="1"></li>
+              <li [attr.data-target]="'#carouselExampleIndicators_'+ course.id" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active pt-1" align="center">
+                <img class="d-block" [src]="'assets/images/' + course.img" alt="First slide">
+              </div>
+              <div class="carousel-item pt-1" align="center">
+                <img class="d-block" [src]="'assets/images/' + course.img" alt="Second slide">
+              </div>
+              <div class="carousel-item pt-1" align="center">
+                <img class="d-block" [src]="'assets/images/' + course.img" alt="Third slide">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators_{{course.id}}" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators_{{course.id}}" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <!-- -->
+          <div class="card-body pl-1 pt-0 pb-2">
+            <p class="m-0 p-0"><small>{{ course.type }} {{ course.distance }}</small></p>
+            <h4 class="card-title m-0 p-0"><a routerLink="/course/{{course.title}}">{{ course.title }}</a></h4>
+            <p class="card-text p-0">{{ course.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-none d-sm-block col-lg-4">
+    <div class="row w-100">
+      <div class="col col-lg-12">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="10">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+      </div>
+    </div>
+  </div>
+</div>
